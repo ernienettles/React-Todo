@@ -24,7 +24,7 @@ class App extends React.Component {
     });
   };
 
-  addTodo = e => {
+  addTodo = (e) => {
     e.preventDefault();
     const newTodo = {
       task: this.state.todo,
@@ -35,7 +35,7 @@ class App extends React.Component {
   };
 
   toggleComplete = (itemID) => {
-    const complete = this.state.todos.map(todo => {
+    const complete = this.state.todos.map((todo) => {
       if (todo.id === itemID) {
         todo.completed = !todo.completed;
       }
@@ -44,16 +44,16 @@ class App extends React.Component {
     this.setState({ complete });
   };
 
-  removeTodo = e => {
+  removeTodo = (e) => {
     e.preventDefault();
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return {
-        todos: prevState.todos.filter(todo => {
+        todos: prevState.todos.filter((todo) => {
           return !todo.completed;
         })
-      }
-    })
-  }
+      };
+    });
+  };
 
   // design `App` to be the parent component of your application.
   // this component is going to take care of state, and any change handlers you need to work with your state
