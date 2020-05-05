@@ -2,27 +2,21 @@
 // feel free to change this component.js into TodoList.js
 
 import React, { Component } from 'react';
+import Todo from './Todo';
 
-class TodoForm extends Component {
+class TodoList extends Component {
 
     render() {
+        console.log(this.props)
         return (
-            <div>
-            <form onSubmit={this.props.addTodo}>
-            <input 
-            name='todo'
-            type='text'
-            placeholder='Enter a task'
-            onChange={this.props.handleChanges}
-            value={this.props.value}
-            />
-            <button>Add Task</button>
-            <button onClick={this.props.removeTodo}>Remove Completed</button>
-            </form>
-                
+            <div className='todoList'>
+            {this.props.todos.map((todo, id) => (
+                <Todo key={id} todo={todo} toggleComplete={this.props.toggleComplete} />
+            ))}
             </div>
+            
         );
     }
 }
 
-export default TodoForm;
+export default TodoList;
