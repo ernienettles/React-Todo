@@ -18,12 +18,16 @@ class App extends React.Component {
     };
   }
 
+  // Handles the changes typed into the input
   handleChanges = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
     });
   };
 
+    // Adds the new task state set by out handlechange, as well as sets the state for the id
+    // and the initial state of completed to false. It then brings down our initial state for
+    // todos and adds the new task to the array.
   addTodo = (e) => {
     e.preventDefault();
     const newTodo = {
@@ -34,7 +38,8 @@ class App extends React.Component {
     this.setState({ todos: [...this.state.todos, newTodo], todo: "" });
   };
 
-  toggleComplete = (itemID) => {
+  // Maps through todos when the onclick event is invoked, then toggles the state of completed to the opposite of the current boolean it's set to.
+  toggleComplete = itemID => {
     const complete = this.state.todos.map((todo) => {
       if (todo.id === itemID) {
         todo.completed = !todo.completed;
@@ -44,13 +49,14 @@ class App extends React.Component {
     this.setState({ complete });
   };
 
+  // Sets the state to a new filtered array that only returns tasks that have a completed state of false.
   removeTodo = (e) => {
     e.preventDefault();
     this.setState((prevState) => {
       return {
         todos: prevState.todos.filter((todo) => {
           return !todo.completed;
-        })
+        }),
       };
     });
   };
